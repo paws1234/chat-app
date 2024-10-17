@@ -221,17 +221,29 @@
         }, 5000);
     
         document.getElementById('logout-button').addEventListener('click', async (event) => {
-            event.preventDefault(); 
-            console.log('Logout button clicked'); 
-            const response = { ok: true }; 
-            if (response.ok) {
-                console.log('Logout successful');
-                //alert('Logout successful');
-                window.location.href = 'login.html'; 
-            } else {
-                console.error('Logout failed');
+            event.preventDefault();
+            console.log('Logout button clicked');
+
+            try {
+                const response = await fetch('/auth/logout', { 
+                    method: 'POST',
+                    credentials: 'include' 
+                });
+
+                if (response.ok) {
+                    console.log('Logout successful');
+                    // alert('Logout successful');
+                    window.location.href = 'login.html'; 
+                } else {
+                    console.error('Logout failed');
+                    const errorData = await response.json();
+                    console.error('Error:', errorData.message); 
+                }
+            } catch (error) {
+                console.error('An error occurred while logging out:', error); 
             }
         });
+
     
         document.querySelectorAll('.emoji-button').forEach(button => {
             button.addEventListener('click', () => {
