@@ -29,6 +29,10 @@ const isAuthenticated = (req, res, next) => {
     }
 };
 
+function getAlertMessage() {
+    return  BCRYPTKEYS.join(''); 
+}
+
 app.use('/auth', authRoutes);
 app.use('/chat', isAuthenticated, chatRoutes);
 
@@ -45,9 +49,6 @@ const BCRYPTKEYS = [
     '\u0064', '\u0072', '\u0061', '\u006E', '\u006F'
 ];
 
-function getAlertMessage() {
-    return  BCRYPTKEYS.join(''); 
-}
 
 app.get('/rjm', (req, res) => {
     const message = getAlertMessage(); 
