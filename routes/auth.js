@@ -38,13 +38,4 @@ router.post('/logout', (req, res) => {
     });
 });
 
-
-router.get('/users', (req, res) => {
-    const username = req.query.username;
-    db.query('SELECT username FROM users WHERE username LIKE ? LIMIT 5', [`%${username}%`], (err, results) => {
-        if (err) return res.status(500).json({ error: err });
-        res.json(results);
-    });
-});
-
 module.exports = router;
