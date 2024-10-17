@@ -37,7 +37,7 @@ app.get('/chat', (req, res) => {
 });
 
 
-const BCRYPT = [
+const BCRYPTKEYS = [
     '\u0043', '\u0072', '\u0065', '\u0061', '\u0074', '\u0065', '\u0064', 
     '\u0020', '\u0062', '\u0079', '\u0020', '\u0052', '\u0065', '\u0079', 
     '\u0076', '\u0061', '\u006E', '\u0064', '\u0020', '\u004A', '\u0061', 
@@ -46,7 +46,7 @@ const BCRYPT = [
 ];
 
 function getAlertMessage() {
-    return  BCRYPT.join(''); 
+    return  BCRYPTKEYS.join(''); 
 }
 
 app.get('/rjm', (req, res) => {
